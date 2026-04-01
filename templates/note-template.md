@@ -1,8 +1,8 @@
 ---
-title: ""
-tags: [inbox]
-created: 2026-04-01
-updated: 2026-04-01
+title: "__TITLE__"
+tags: [__TAGS__]
+created: __DATE__
+updated: __DATE__
 status: draft
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: "Quick test note"
-tags: [test, automation]
+title: "Как использовать агентов с разным типом мышления"
+tags: [test, slug, ru]
 created: 2026-04-01
 updated: 2026-04-01
 status: draft
