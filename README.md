@@ -29,6 +29,26 @@
 - По frontmatter: `tags: [backend`
 - По хеш-тегам в тексте: `#backend`
 
+## Быстрое создание заметки
+
+Из корня репозитория:
+
+```powershell
+.\scripts\new-note.ps1 -Title "Идея API слоя" -Tags "idea,backend,urgent" -Section projects
+```
+
+Или через короткий запуск:
+
+```powershell
+.\new-note.cmd -Title "Дневная заметка" -Tags "daily,planning" -Section daily
+```
+
+Параметры:
+
+- `-Title` (обязательный)
+- `-Tags` (по умолчанию `inbox`, через запятую)
+- `-Section` (`inbox`, `daily`, `projects`, `topics`)
+
 ## Git workflow
 
 ```bash
