@@ -4,6 +4,12 @@ tags: [planning, backend, Agents, OpenClaw]
 created: 2026-04-01
 updated: 2026-04-01
 status: draft
+previous_filename: 2026-04-01-note.md
+parents: []
+related:
+  - ./2026-04-01-odin-agent-neskolko-tipov-myshleniya-na-zadachu.md
+  - ./2026-04-01-agenty-raznye-tipy-myshleniya-chernovik.md
+  - ./2026-04-01-cursor-agent-zapisi-notes-projects-novyy-katalog.md
 ---
 
 # Контекст
@@ -75,6 +81,12 @@ status: draft
 
 Если хотите, могу следующим шагом дать **конкретный шаблон плагина под OpenClaw** (структура файлов + интерфейсы) для 3 агентов сразу:  
 `symbolic_planner`, `bayes_updater`, `causal_reasoner`, чтобы вы сразу вставили в проект.
+
+## Связанные заметки (ветка про типы мышления)
+
+- [Один агент vs несколько типов мышления на одну задачу](2026-04-01-odin-agent-neskolko-tipov-myshleniya-na-zadachu.md)
+- [Черновик: как использовать агентов с разным типом мышления](2026-04-01-agenty-raznye-tipy-myshleniya-chernovik.md)
+- [Cursor: записи в projects и новая директория](2026-04-01-cursor-agent-zapisi-notes-projects-novyy-katalog.md)
 
 # Следующие шаги
 
