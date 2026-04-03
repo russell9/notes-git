@@ -49,6 +49,21 @@
 - `-Tags` (по умолчанию `inbox`, через запятую)
 - `-Section` (`inbox`, `daily`, `projects`, `topics`)
 
+## Терминал: тот же сценарий, что `/note-parent-research` (npr)
+
+Команда в Cursor — это файл `.cursor/commands/note-parent-research.md`. В терминале короткий вызов: **`npr`** (после добавления функции в профиль PowerShell) или `.\scripts\npr.ps1`.
+
+Обязательно укажи **путь к заметке** (в чате IDE «текущий файл» известен самому Cursor; из терминала — только явный путь):
+
+```powershell
+npr "C:\Users\YOUR\Documents\notes-git\notes\inbox\2026-04-02-example.md"
+```
+
+- Если в PATH есть **Cursor Agent CLI** (`agent` с [cursor.com/install](https://cursor.com/install)), скрипт выполнит `agent chat` с полным текстом спецификации и этим путём, рабочая папка — `notes-git`.
+- Если `agent` нет — в буфер копируется **тот же полный промпт**; вставь его в чат Agent в Cursor (Cmd/Ctrl+L) — результат тот же, что вставка инструкции вручную.
+
+Проверка без запуска агента: `npr -WhatIf "...\note.md"`
+
 ## Git workflow
 
 ```bash

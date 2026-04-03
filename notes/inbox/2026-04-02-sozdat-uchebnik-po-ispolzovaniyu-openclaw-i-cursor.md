@@ -12,7 +12,7 @@ hub_research_applied_at: 2026-04-02
 
 **Title:** Создать учебник по использованию OpenClaw и Cursor.
 
-Исходная постановка в этой заметке была минимальной: шаблон «Контекст / Основное / Следующие шаги / Ссылки» без заполненного содержания. Суть задачи — подготовить **учебный материал**, который связывает **OpenClaw** (фреймворк/экосистема автономных агентов, self-hosted, интеграции с каналами и инструментами) и **Cursor** (IDE с глубокой интеграцией LLM, агентными режимами и специализированными моделями для кода). Контекст ограничен **этим файлом**; родительские заметки не подтягиваются.
+Исходная постановка в этой заметке была минимальной: шаблон «Контекст / Основное / Следующие шаги / Ссылки» без заполненного содержания. Суть задачи — подготовить **учебный материал**, который связывает **OpenClaw** (фреймворк/экосистема автономных агентов, self-hosted, интеграции с каналами и инструментами) и **Cursor** (IDE с глубокой интеграцией LLM, агентными режимами и специализированными моделями для кода). Контекст ограничен **этим файлом**; родительские заметки не подтягиваются. **Повторный проход исследования:** добавлены MCP как стандарт интеграции инструментов и отдельная эмпирика по GitHub Copilot для сравнения с выводами по Cursor.
 
 # Контекст
 
@@ -20,7 +20,7 @@ hub_research_applied_at: 2026-04-02
 
 ## @goal
 
-Сформировать **обзорную базу для учебника**: (1) что такое OpenClaw и какие у него типичные компоненты в продакшен-описаниях; (2) как устроен и чем измеряется **агентный** слой в Cursor (модели, бенчмарки, официальные отчёты); (3) какие **исследования** фиксируют эффекты AI-ассистентов в разработке и что это значит для педагогики учебника (velocity vs качество, QA); (4) смежные работы про опыт программирования с ИИ и мультиагентные паттерны — для структуры глав и ссылок на литературу.
+Сформировать **обзорную базу для учебника**: (1) что такое OpenClaw и какие у него типичные компоненты в продакшен-описаниях; (2) как устроен и чем измеряется **агентный** слой в Cursor (модели, бенчмарки, официальные отчёты); (3) какие **исследования** фиксируют эффекты AI-ассистентов в разработке и что это значит для педагогики учебника (velocity vs качество, QA); (4) смежные работы про опыт программирования с ИИ и мультиагентные паттерны — для структуры глав и ссылок на литературу; **(5)** явно связать учебный материал с **MCP** и с **бенчмарками реальных задач** (SWE-bench и аналоги), чтобы читатель понимал границы измерений «умение агента».
 
 # Основное
 
@@ -63,6 +63,20 @@ OpenClaw в открытых материалах 2025–2026 позициони
 5. Связка Cursor + агенты: где код, где оркестратор, как версионировать промпты и конфиги.
 6. Приложения: глоссарий, чеклисты, примеры промптов, ссылки на документацию и статьи.
 
+## 6. Model Context Protocol (MCP): зачем в учебнике рядом с OpenClaw и Cursor
+
+**MCP** — открытый протокол (представлен Anthropic в конце 2024), который стандартизует подключение приложений с LLM к внешним **ресурсам, промптам и инструментам** по модели host / client / server (на базе JSON-RPC). Официальная спецификация и версии протокола: [modelcontextprotocol.io](https://modelcontextprotocol.io/specification/latest). Введение и мотивация: [Anthropic — Model Context Protocol](https://www.anthropic.com/research/model-context-protocol).
+
+Для учебника это даёт **общий язык**: OpenClaw и Cursor в продакшен-описаниях опираются на идею подключаемых инструментов; MCP — проверяемый «крючок» для главы про безопасность (согласие пользователя, границы roots, вызов tools), совместимую с `schick2023toolformer` и практикой агентных систем.
+
+## 7. Другая эмпирика: GitHub Copilot и координация в OSS
+
+Чтобы не сводить весь курс к одному инструменту, полезно сослаться на крупную работу по **GitHub Copilot** на данных GitHub: рост вклада на уровне проекта и участия разработчиков сопровождается **ростом времени на координацию** при интеграции кода (~8% в их оценке) и различием эффектов для «ядра» и периферии команды [arXiv:2410.02091](https://arxiv.org/abs/2410.02091). Параллель с He et al. по Cursor: и там речь о **компромиссах скорость/качество/координация** — хороший материал для модуля «критическое мышление» и командных практик code review.
+
+## 8. Бенчмарки «реальных» задач (SWE-bench)
+
+Composer 2 и другие отчёты ссылаются на **SWE-bench** как на оценку исправления issue в репозиториях. В общей библиотеке уже есть `jimenez2024swebench` — имеет смысл выделить в учебнике отдельный подпункт: что именно измеряет бенчмарк, чем он **не** заменяет (стиль, долгосрочная поддерживаемость, командные процессы).
+
 # Следующие шаги
 
 - [ ] Уточнить целевую аудиторию учебника (разработчики / преподаватели / логисты-аналитики).
@@ -74,6 +88,8 @@ OpenClaw в открытых материалах 2025–2026 позициони
 - He et al., эффекты Cursor на velocity и качество: [arXiv:2511.04427](https://arxiv.org/abs/2511.04427)
 - Composer 2 Technical Report: [arXiv:2603.24477](https://arxiv.org/abs/2603.24477), [cursor.com/blog](https://cursor.com/blog/composer-2-technical-report)
 - OpenClaw (код и релизы): [github.com/openclaw/openclaw](https://github.com/openclaw/openclaw)
+- MCP (спецификация): [modelcontextprotocol.io](https://modelcontextprotocol.io/specification/latest)
+- Copilot и координация в OSS: [arXiv:2410.02091](https://arxiv.org/abs/2410.02091)
 
 ```bibtex
 @article{he2026cursorvelocity,
@@ -97,10 +113,27 @@ OpenClaw в открытых материалах 2025–2026 позициони
 }
 
 @misc{openclaw2026github,
-  title        = {openclaw: OpenClaw agent framework (source repository and releases)},
-  author       = {{OpenClaw contributors}},
-  year         = {2026},
-  howpublished = {\url{https://github.com/openclaw/openclaw}},
-  note         = {Accessed 2026-04-02; cite specific release tag for reproducibility}
+  title  = {openclaw: OpenClaw agent framework (source repository and releases)},
+  author = {{OpenClaw contributors}},
+  year   = {2026},
+  url    = {https://github.com/openclaw/openclaw},
+  note   = {Cite a specific release tag for reproducibility}
+}
+
+@misc{anthropic2024mcp,
+  title  = {Model Context Protocol specification},
+  author = {{Anthropic}},
+  year   = {2024},
+  url    = {https://modelcontextprotocol.io/specification/latest},
+  note   = {Open standard for LLM tool and context integration; revised editions on site}
+}
+
+@article{song2025copilotoss,
+  title   = {The Impact of Generative {AI} on Collaborative Open-Source Software Development: Evidence from {GitHub Copilot}},
+  author  = {Song, Fangchen and Agarwal, Ashish and Wen, Wen},
+  journal = {arXiv preprint arXiv:2410.02091},
+  year    = {2025},
+  doi     = {10.48550/arXiv.2410.02091},
+  url     = {https://arxiv.org/abs/2410.02091}
 }
 ```
